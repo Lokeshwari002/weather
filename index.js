@@ -24,7 +24,7 @@ app.get("/",(req,res)=>{
 app.get("/weather",(req,res)=>{
     db.query("select * from weather_details order by created_at desc",(err,results)=>{
         if(err){
-            return res.json({message:"db error"})
+            return res.json({message:"db error",err})
         }
         const data=results.map(result=>({
             location:result.location,
